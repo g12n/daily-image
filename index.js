@@ -21,7 +21,8 @@ context.lineCap = 'round';
 var step = size/10;
 
 var aThirdOfHeight = size/3;
-context.fillStyle="#fff"
+context.fillStyle="#000"
+context.strokeStyle="#fff"
 context.fillRect(0,0,size,size)
 
 function draw(x, y, width, height, positions) {
