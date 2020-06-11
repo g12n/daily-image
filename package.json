@@ -1,0 +1,23 @@
+{
+  "name": "daily-image",
+  "version": "0.0.1",
+  "description": "generate a new image every day",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/g12n/daily-image.git"
+  },
+  "author": "g12n",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/g12n/daily-image/issues"
+  },
+  "homepage": "https://github.com/g12n/daily-image#readme",
+  "dependencies": {
+    "canvas": "^2.6.1"
+  }
+}
