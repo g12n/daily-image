@@ -13,47 +13,106 @@ let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
 
+context.lineWidth = 8;
+var step = size / 7;
+var white = '#F2F5F1';
+var colors = ['#D40920', '#1356A2', '#F7D842']
 
+var squares = [{
+    x: 0,
+    y: 0,
+    width: size,
+    height: size
+  }];
 
-// Draw on Canvas
-context.lineWidth = 10;
-context.lineCap = 'round';
-var step = size/10;
+function splitSquaresWith(coordinates) {
+  const { x, y } = coordinates;
 
-var aThirdOfHeight = size/3;
-context.fillStyle="#000"
-context.strokeStyle="#fff"
-context.fillRect(0,0,size,size)
+  for (var i = squares.length - 1; i >= 0; i--) {
+  const square = squares[i];
 
-function draw(x, y, width, height, positions) {
-  context.save();
-  context.translate(x + width/2, y + height/2);
-  context.rotate(Math.random() * 5);
-  context.translate(-width/2, -height/2);
-  
-  for(var i = 0; i <= positions.length; i++) {
+  if (x && x > square.x && x < square.x + square.width) {
+      if(Math.random() > 0.5) {
+        squares.splice(i, 1);
+        splitOnX(square, x); 
+      }
+  }
+
+  if (y && y > square.y && y < square.y + square.height) {
+      if(Math.random() > 0.5) {
+        squares.splice(i, 1);
+        splitOnY(square, y); 
+      }
+  }
+  }
+}
+
+function splitOnX(square, splitAt) {
+  var squareA = {
+    x: square.x,
+    y: square.y,
+    width: square.width - (square.width - splitAt + square.x),
+    height: square.height
+  };
+
+  var squareB = {
+  x: splitAt,
+  y: square.y,
+  width: square.width - splitAt + square.x,
+  height: square.height
+  };
+
+  squares.push(squareA);
+  squares.push(squareB);
+}
+
+function splitOnY(square, splitAt) {
+  var squareA = {
+    x: square.x,
+    y: square.y,
+    width: square.width,
+    height: square.height - (square.height - splitAt + square.y)
+  };
+
+  var squareB = {
+  x: square.x,
+  y: splitAt,
+  width: square.width,
+  height: square.height - splitAt + square.y
+  };
+
+  squares.push(squareA);
+  squares.push(squareB);
+}
+
+for (var i = 0; i < size; i += step) {
+  splitSquaresWith({ y: i });
+  splitSquaresWith({ x: i });
+}
+
+function draw() {
+  for (var i = 0; i < colors.length; i++) {
+    squares[Math.floor(Math.random() * squares.length)].color = colors[i];
+  }
+  for (var i = 0; i < squares.length; i++) {
     context.beginPath();
-    context.moveTo(positions[i] * width, 0);
-    context.lineTo(positions[i] * width, height);
+    context.rect(
+      squares[i].x,
+      squares[i].y,
+      squares[i].width,
+      squares[i].height
+    );
+    if(squares[i].color) {
+      context.fillStyle = squares[i].color;
+    } else {
+      context.fillStyle = white
+    }
+    context.fill()
     context.stroke();
   }
-
-  context.restore();
-}
-  
-for(var y = step; y < size - step; y += step) {
-  for(var x = step; x < size - step; x+= step) {
-    if(y < aThirdOfHeight) {
-      draw(x, y, step, step, [0.5]);   
-    } else if(y < aThirdOfHeight * 2) {
-      draw(x, y, step, step, [0.2, 0.8]);      
-    } else {
-      draw(x, y, step, step, [0.1, 0.5, 0.9]);      
-    }
-  }
 }
 
-
+draw()
 //context.font = '30px Impact'
 //context.fillStyle="#445555"
 //context.fillText(`g12n ${name}`, 40, 40)
