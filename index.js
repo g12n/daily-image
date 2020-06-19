@@ -14,15 +14,20 @@ let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
 
 context.lineWidth = 8;
-var step = size / 7;
+var padding = 8; 
+let vw = size -2*padding;
+let vh = size -2*padding;
+
+var step = vw / 13
 var white = '#F2F5F1';
 var colors = ['#D40920', '#1356A2', '#F7D842']
 
+
 var squares = [{
-    x: 0,
-    y: 0,
-    width: size,
-    height: size
+    x: padding,
+    y: padding,
+    width: vw,
+    height: vh,
   }];
 
 function splitSquaresWith(coordinates) {
@@ -85,9 +90,9 @@ function splitOnY(square, splitAt) {
   squares.push(squareB);
 }
 
-for (var i = 0; i < size; i += step) {
-  splitSquaresWith({ y: i });
-  splitSquaresWith({ x: i });
+for (var i = 0; i < vw; i += step) {
+  splitSquaresWith({ y: i + padding});
+  splitSquaresWith({ x: i + padding });
 }
 
 function draw() {
@@ -113,11 +118,13 @@ function draw() {
 }
 
 draw()
+
 //context.font = '30px Impact'
 //context.fillStyle="#445555"
 //context.fillText(`g12n ${name}`, 40, 40)
 
 // Create folder if it doesnt exist
+
 var dir = './_site';
 
 if (!fs.existsSync(dir)){
@@ -143,6 +150,17 @@ let code = `<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin: 0; padding: 10vmin;}
+img{width: 80vmin; height: 80vmin; margin: 0 auto; display: block;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
+              0 2px 2px rgba(0,0,0,0.11), 
+              0 4px 4px rgba(0,0,0,0.11), 
+              0 8px 8px rgba(0,0,0,0.11), 
+              0 16px 16px rgba(0,0,0,0.11), 
+              0 32px 32px rgba(0,0,0,0.11);
+}
+</style>
 <title>${name}</title>
 </head>
 <body>
