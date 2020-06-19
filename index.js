@@ -14,7 +14,7 @@ let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
 
 context.lineWidth = 8;
-var padding = 8; 
+var padding = 4; 
 let vw = size -2*padding;
 let vh = size -2*padding;
 
