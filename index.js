@@ -13,14 +13,15 @@ let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
 
-context.lineWidth = 8;
-var padding = 4; 
+context.lineWidth = 12;
+var padding = 6; 
 let vw = size -2*padding;
 let vh = size -2*padding;
 
-var step = vw / 13
+var step = vw / 8
 var white = '#F2F5F1';
-var colors = ['#D40920', '#1356A2', '#F7D842']
+var colors = ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"]
+
 
 
 var squares = [{
