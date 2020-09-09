@@ -14,7 +14,7 @@ const {juwel} = require("./models/juwel.js")
 
 // date
 
-let today = new Date("2020-9-15");
+let today = new Date();
 
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
