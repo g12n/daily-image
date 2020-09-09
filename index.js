@@ -14,7 +14,7 @@ const {juwel} = require("./models/juwel.js")
 
 // date
 
-let today = new Date('2020-09-20');
+let today = new Date();
 
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
@@ -65,7 +65,6 @@ stream.pipe(out)
 out.on('finish', () =>  console.log('The JPEG file was created.'))
 
 
-
 // Create HTML 
 
 let code = `<!DOCTYPE html>
@@ -94,5 +93,5 @@ img{width: 80vmin; height: 80vmin; margin: 0 auto; display: block;
 
 fs.writeFile('_site/index.html',code, function (err) {
     if (err) return console.log(err);
-    console.log(`${today} > _site/index.html`);
+   // console.log(`${today} > _site/index.html`);
   });
