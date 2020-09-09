@@ -14,16 +14,23 @@ const {juwel} = require("./models/juwel.js")
 
 // date
 
-let today = new Date();
+let today = new Date("2020-9-15");
 
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
 random.setSeed(name)
 
+let palettes = [
+  ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"],
+  ["#e63946","#f1faee","#a8dadc","#457b9d","#1d3557"],
+  ["#112233","#14213d","#fca311","#e5e5e5","#ffffff"],
+  ["#264653","#2a9d8f","#e9c46a","#f4a261","#e76f51"]
+];
 
-let palette = ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"];
 
+let palette = random.pick(palettes);
 
+random.setSeed(name)
 let modelNumber = random.rangeFloor(0,3)
 //modelNumber = 0;
 
