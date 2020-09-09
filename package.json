@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/g12n/daily-image#readme",
   "dependencies": {
-    "canvas": "^2.6.1"
+    "canvas": "^2.6.1",
+    "canvas-sketch-util": "^1.10.0"
   }
 }

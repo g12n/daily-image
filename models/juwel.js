@@ -1,14 +1,11 @@
-
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
+const random = require('canvas-sketch-util/random');
 
 
+const juwel = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed=100) =>{
 
-const juwel = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"]) =>{
+
+    random.setSeed(seed)
+
     let width = context.canvas.width;
     let height= context.canvas.height;
     let corners =palette.length+1;
@@ -21,7 +18,7 @@ const juwel = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2
 
     let step = (2*Math.PI) / corners;
     
-    shuffleArray(palette)
+    palette = random.shuffle(palette)
 
     /* Points of the Polygon*/
     let polygon = [];
@@ -41,7 +38,7 @@ const juwel = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2
         context.beginPath();
 
 
-        shuffleArray(polygon)
+        polygon =  random.shuffle(polygon)
         
 
 

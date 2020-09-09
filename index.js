@@ -1,5 +1,7 @@
 fs = require('fs');
 
+const random = require('canvas-sketch-util/random');
+
 // set Up Canvas
 const size =800;
 const { createCanvas, loadImage } = require('canvas')
@@ -16,24 +18,27 @@ let today = new Date();
 
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
+random.setSeed(name)
 
 
-let modelNumber = Math.floor(Math.random()*3)
+let palette = ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"];
+
+
+let modelNumber = random.rangeFloor(0,3)
+//modelNumber = 0;
 
 switch (modelNumber) {
   case 0:
-    mondrian(context)
-    break;
+    juwel(context,palette, name);
+      break;
   case 1:
-    circles(context);
+    mondrian(context, palette, name)
     break;
   case 2:
-    juwel(context);
-      break;
+    circles(context,palette, name);
+    break;
 
 }
-
-
 
 
 
@@ -58,7 +63,6 @@ const stream = canvas.createJPEGStream({
   })
 stream.pipe(out)
 out.on('finish', () =>  console.log('The JPEG file was created.'))
-
 
 
 // Create HTML 
@@ -89,5 +93,5 @@ img{width: 80vmin; height: 80vmin; margin: 0 auto; display: block;
 
 fs.writeFile('_site/index.html',code, function (err) {
     if (err) return console.log(err);
-    console.log(`${today} > _site/index.html`);
+   // console.log(`${today} > _site/index.html`);
   });
