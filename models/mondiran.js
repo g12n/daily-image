@@ -1,3 +1,6 @@
+const random = require('canvas-sketch-util/random');
+
+
 function splitSquaresWith(squares ,coordinates) {
   const { x, y } = coordinates;
 
@@ -5,14 +8,14 @@ function splitSquaresWith(squares ,coordinates) {
   const square = squares[i];
 
   if (x && x > square.x && x < square.x + square.width) {
-      if(Math.random() > 0.5) {
+      if(random.value() > 0.5) {
         squares.splice(i, 1);
         splitOnX(square, x,squares); 
       }
   }
 
   if (y && y > square.y && y < square.y + square.height) {
-      if(Math.random() > 0.5) {
+      if(random.value() > 0.5) {
         squares.splice(i, 1);
         splitOnY(square, y, squares); 
       }
@@ -60,7 +63,9 @@ function splitOnY(square, splitAt, squares) {
 
 
 
-const mondrian=(context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"]) =>{
+const mondrian=(context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed=0) =>{
+
+  random.setSeed(seed)
 
     context.lineWidth = 12;
     var padding = 6; 
@@ -85,7 +90,7 @@ const mondrian=(context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae
   }
 
   for (var i = 0; i < colors.length; i++) {
-    squares[Math.floor(Math.random() * squares.length)].color = colors[i];
+    squares[Math.floor(random.value() * squares.length)].color = colors[i];
   }
   for (var i = 0; i < squares.length; i++) {
     

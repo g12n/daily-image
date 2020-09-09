@@ -1,5 +1,7 @@
 fs = require('fs');
 
+const random = require('canvas-sketch-util/random');
+
 // set Up Canvas
 const size =800;
 const { createCanvas, loadImage } = require('canvas')
@@ -12,28 +14,31 @@ const {juwel} = require("./models/juwel.js")
 
 // date
 
-let today = new Date();
+let today = new Date('2020-09-20');
 
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 
+random.setSeed(name)
 
 
-let modelNumber = Math.floor(Math.random()*3)
+let palette = ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"];
+
+
+let modelNumber = random.rangeFloor(0,3)
+//modelNumber = 0;
 
 switch (modelNumber) {
   case 0:
-    mondrian(context)
-    break;
+    juwel(context,palette, name);
+      break;
   case 1:
-    circles(context);
+    mondrian(context, palette, name)
     break;
   case 2:
-    juwel(context);
-      break;
+    circles(context,palette, name);
+    break;
 
 }
-
-
 
 
 
