@@ -11,14 +11,15 @@ const context = canvas.getContext('2d')
 const {mondrian} = require("./models/mondiran.js")
 const {circles} = require("./models/circles.js")
 const {juwel} = require("./models/juwel.js")
+const {brilliant} = require("./models/brilliant.js")
 
 // date
 
 let today = new Date();
 
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
-
-random.setSeed(name)
+let seed = name;
+random.setSeed(seed)
 
 let palettes = [
   ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"],
@@ -27,24 +28,25 @@ let palettes = [
   ["#264653","#2a9d8f","#e9c46a","#f4a261","#e76f51"]
 ];
 
-
 let palette = random.pick(palettes);
+random.setSeed(seed)
 
-random.setSeed(name)
-let modelNumber = random.rangeFloor(0,3)
-//modelNumber = 0;
+let modelNumber = random.rangeFloor(0,4)
+//modelNumber = 3;
 
 switch (modelNumber) {
   case 0:
-    juwel(context,palette, name);
+    juwel(context,palette, seed);
       break;
   case 1:
-    mondrian(context, palette, name)
+    mondrian(context, palette, seed)
     break;
   case 2:
-    circles(context,palette, name);
+    circles(context,palette, seed);
     break;
-
+  case 3:
+    brilliant(context,palette, seed);
+    break;
 }
 
 
