@@ -99,7 +99,7 @@ img{width: 80vmin; height: 80vmin; margin: 0 auto; display: block;
               0 32px 32px rgba(0,0,0,0.11);
 }
 </style>
-<title>${name}</title>
+<title>${name} by G12N</title>
 </head>
 <body>
 <img src="${name}.jpeg" alt="daily-image" />
