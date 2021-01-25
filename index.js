@@ -29,7 +29,8 @@ let palettes = [
   ["#e63946","#f1faee","#a8dadc","#457b9d","#1d3557"],
   ["#112233","#14213d","#fca311","#e5e5e5","#ffffff"],
   ["#264653","#2a9d8f","#e9c46a","#f4a261","#e76f51"],
-  ["#6E819E","#FFFFFF","#F6C8AC","#EFF7F5","#2C4D5D","#EF8F88"]
+  ["#6E819E","#FFFFFF","#F6C8AC","#EFF7F5","#2C4D5D","#EF8F88"],
+  [ "#264653","#2a9d8f","#e9c46a","#f4a261","#e76f51"]
 ];
 
 let palette = random.pick(palettes);

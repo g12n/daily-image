@@ -17,7 +17,7 @@ const juwel = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2
     let radius = vw/2
 
     let step = (2*Math.PI) / corners;
-    
+
     palette = random.shuffle(palette)
 
     /* Points of the Polygon*/
@@ -30,27 +30,16 @@ const juwel = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2
         polygon.push([x,y]);
 
     }
-
-
-
     palette.map(color =>{
         context.fillStyle = color;
         context.beginPath();
-
-
         polygon =  random.shuffle(polygon)
-        
-
-
         for (let i= 0; i<= 2; i++){
             let [x,y] = polygon[i]
             context.lineTo(x, y);
         }
-
         context.fill()
-
     })
-
 }
 
 exports.juwel = juwel;
