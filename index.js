@@ -1,4 +1,8 @@
 fs = require('fs');
+const sharp = require('sharp');
+
+
+
 
 const random = require('canvas-sketch-util/random');
 
@@ -71,6 +75,7 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
 
+
 // Write JPEg
 
 const out = fs.createWriteStream(__dirname + `/_site/${name}.jpeg`)
@@ -80,6 +85,23 @@ const stream = canvas.createJPEGStream({
   })
 stream.pipe(out)
 out.on('finish', () =>  console.log('The JPEG file was created.'))
+
+
+// File from SVG
+
+let svg = `
+<svg width="600" height="600" viewBox="-64 -64 128 128" xmlns="http://www.w3.org/2000/svg">
+<circle r="58" fill="#f60" />
+</svg>
+`
+var buffer = Buffer.from(svg);
+
+sharp(buffer)
+  .toFile('_site/test.jpeg')
+  .then(info => { console.log(info) })
+  .catch(err => {  console.log(err) });
+
+
 
 
 // Create HTML 
