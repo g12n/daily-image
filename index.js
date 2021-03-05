@@ -1,9 +1,6 @@
 fs = require('fs');
 const sharp = require('sharp');
 
-
-
-
 const random = require('canvas-sketch-util/random');
 
 // set Up Canvas
@@ -61,12 +58,6 @@ switch (modelNumber) {
     break;
 }
 
-
-
-//context.font = '30px Impact'
-//context.fillStyle="#445555"
-//context.fillText(`g12n ${name}`, 40, 40)
-
 // Create folder if it doesnt exist
 
 var dir = './_site';
@@ -78,14 +69,16 @@ if (!fs.existsSync(dir)){
 
 // Write JPEg
 
-const out = fs.createWriteStream(__dirname + `/_site/${name}.jpeg`)
-const stream = canvas.createJPEGStream({
-    quality: 0.75,
-    chromaSubsampling: false
-  })
-stream.pipe(out)
-out.on('finish', () =>  console.log('The JPEG file was created.'))
+let canvasBuffer = canvas.toBuffer()
+sharp(canvasBuffer)
+  .toFile(`_site/${name}.jpeg`)
+  .then(info => { console.log(info) })
+  .catch(err => {  console.log(err) });
 
+  sharp(canvasBuffer)
+  .toFile(`_site/${name}.heic`)
+  .then(info => { console.log("heic",info) })
+  .catch(err => {  console.log(err) });
 
 // File from SVG
 
@@ -100,9 +93,6 @@ sharp(buffer)
   .toFile('_site/test.jpeg')
   .then(info => { console.log(info) })
   .catch(err => {  console.log(err) });
-
-
-
 
 // Create HTML 
 
@@ -133,4 +123,4 @@ img{width: 80vmin; height: 80vmin; margin: 0 auto; display: block;
 fs.writeFile('_site/index.html',code, function (err) {
     if (err) return console.log(err);
    // console.log(`${today} > _site/index.html`);
-  });
+});
