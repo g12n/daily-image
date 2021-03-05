@@ -5,6 +5,7 @@ const random = require('canvas-sketch-util/random');
 
 // set Up Canvas
 const size =800;
+const viewBox = "-400 -400 800 800"
 const { createCanvas, loadImage } = require('canvas')
 const canvas = createCanvas(size, size)
 const context = canvas.getContext('2d')
@@ -14,6 +15,8 @@ const {circles} = require("./models/circles.js")
 const {pies} = require("./models/pies.js")
 const {juwel} = require("./models/juwel.js")
 const {brilliant} = require("./models/brilliant.js")
+
+const {brilliantSVG} = require("./svgmodels/brilliant.js")
 
 // date
 
@@ -66,31 +69,26 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
 
-
 // Write JPEg
 
 let canvasBuffer = canvas.toBuffer()
-sharp(canvasBuffer)
+
+let s = sharp(canvasBuffer);
+
+  s.jpeg({quality:90})
   .toFile(`_site/${name}.jpeg`)
-  .then(info => { console.log(info) })
+  .then(info => { console.log("jpeg:", info.size) })
   .catch(err => {  console.log(err) });
 
-  sharp(canvasBuffer)
-  .toFile(`_site/${name}.heic`)
-  .then(info => { console.log("heic",info) })
-  .catch(err => {  console.log(err) });
 
 // File from SVG
 
-let svg = `
-<svg width="600" height="600" viewBox="-64 -64 128 128" xmlns="http://www.w3.org/2000/svg">
-<circle r="58" fill="#f60" />
-</svg>
-`
+let svg =  brilliantSVG(viewBox, palette,seed)
 var buffer = Buffer.from(svg);
 
 sharp(buffer)
-  .toFile('_site/test.jpeg')
+  .webp({quality:90})
+  .toFile('_site/test.webp')
   .then(info => { console.log(info) })
   .catch(err => {  console.log(err) });
 
