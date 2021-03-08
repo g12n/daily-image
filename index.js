@@ -1,13 +1,11 @@
 fs = require('fs');
 const sharp = require('sharp');
 
-
-
-
 const random = require('canvas-sketch-util/random');
 
 // set Up Canvas
 const size =800;
+const viewBox = "-400 -400 800 800"
 const { createCanvas, loadImage } = require('canvas')
 const canvas = createCanvas(size, size)
 const context = canvas.getContext('2d')
@@ -17,6 +15,8 @@ const {circles} = require("./models/circles.js")
 const {pies} = require("./models/pies.js")
 const {juwel} = require("./models/juwel.js")
 const {brilliant} = require("./models/brilliant.js")
+
+const {brilliantSVG} = require("./svgmodels/brilliant.js")
 
 // date
 
@@ -61,12 +61,6 @@ switch (modelNumber) {
     break;
 }
 
-
-
-//context.font = '30px Impact'
-//context.fillStyle="#445555"
-//context.fillText(`g12n ${name}`, 40, 40)
-
 // Create folder if it doesnt exist
 
 var dir = './_site';
@@ -75,34 +69,28 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
 
-
 // Write JPEg
 
-const out = fs.createWriteStream(__dirname + `/_site/${name}.jpeg`)
-const stream = canvas.createJPEGStream({
-    quality: 0.75,
-    chromaSubsampling: false
-  })
-stream.pipe(out)
-out.on('finish', () =>  console.log('The JPEG file was created.'))
+let canvasBuffer = canvas.toBuffer()
+
+let s = sharp(canvasBuffer);
+
+  s.jpeg({quality:90})
+  .toFile(`_site/${name}.jpeg`)
+  .then(info => { console.log("jpeg:", info.size) })
+  .catch(err => {  console.log(err) });
 
 
 // File from SVG
 
-let svg = `
-<svg width="600" height="600" viewBox="-64 -64 128 128" xmlns="http://www.w3.org/2000/svg">
-<circle r="58" fill="#f60" />
-</svg>
-`
+let svg =  brilliantSVG(viewBox, palette,seed)
 var buffer = Buffer.from(svg);
 
 sharp(buffer)
-  .toFile('_site/test.jpeg')
+  .webp({quality:90})
+  .toFile('_site/test.webp')
   .then(info => { console.log(info) })
   .catch(err => {  console.log(err) });
-
-
-
 
 // Create HTML 
 
@@ -133,4 +121,4 @@ img{width: 80vmin; height: 80vmin; margin: 0 auto; display: block;
 fs.writeFile('_site/index.html',code, function (err) {
     if (err) return console.log(err);
    // console.log(`${today} > _site/index.html`);
-  });
+});
