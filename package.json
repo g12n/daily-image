@@ -20,7 +20,7 @@
   "dependencies": {
     "canvas": "^2.7.0",
     "canvas-sketch-util": "^1.10.0",
-    "d3-shape": "^2.0.0",
+    "d3-shape": "^2.1.0",
     "sharp": "^0.27.2",
     "svgpath": "^2.3.1"
   }
