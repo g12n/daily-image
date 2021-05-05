@@ -34,10 +34,15 @@ let palettes = [
   ["#112233","#14213d","#fca311","#e5e5e5","#ffffff"],
   ["#264653","#2a9d8f","#e9c46a","#f4a261","#e76f51"],
   ["#6E819E","#FFFFFF","#F6C8AC","#EFF7F5","#2C4D5D","#EF8F88"],
-  [ "#264653","#2a9d8f","#e9c46a","#f4a261","#e76f51"]
+  [ "#264653","#2a9d8f","#e9c46a","#f4a261","#e76f51"], 
+  ["#ef476f","#ffd166","#06d6a0","#118ab2","#073b4c"],
+  ["#000814","#001d3d","#003566","#ffc300","#ffd60a"]
+
+
 ];
 
 let palette = random.pick(palettes);
+//let palette = palettes[7]
 random.setSeed(seed)
 
 let modelNumber = random.rangeFloor(0,5)
@@ -83,7 +88,7 @@ let s = sharp(canvasBuffer);
 
 // File from SVG
 
-let svg =  brilliantSVG(viewBox, palette,seed)
+let svg =  brilliantSVG(viewBox, palette, seed)
 var buffer = Buffer.from(svg);
 
 sharp(buffer)
