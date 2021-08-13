@@ -22,39 +22,42 @@ export const drawArc = (settings) =>{
 
     let {
         center = [0,0],
-        radius = 0,
-        ratio = 0.5,
+        radius = 100,
+        ratio = 0,
         start= 0,
-        sweep = 0.5
+        sweep = 1
     } = settings;
 
 
     let startAngle = start * Math.PI * 2;
-    let endAngle =  startAngle + sweep * Math.PI * 2;
+    
+    let endAngle = sweep < 1 ? startAngle + sweep * Math.PI * 2 : startAngle + sweep * Math.PI;
+    
+
     let outerRadius = radius;
     let innerRadius = radius * ratio;
 
-    let p1 = vec2.rotate([],[innerRadius,0],startAngle);
-        vec2.add(p1,p1,center)
+    let p1 = vec2.rotate([],[outerRadius,0],startAngle);
+    let p2 = vec2.rotate([],[outerRadius,0],endAngle);
+    let p3 = vec2.rotate([],[innerRadius,0],endAngle);
+    let p4 = vec2.rotate([],[innerRadius,0],startAngle);
+    
+    let large = sweep >= 0.5 ? 1 : 0 
 
-    let p2 = vec2.rotate([],[outerRadius,0],startAngle);
-        vec2.add(p2,p2,center)
+    let path = `M${p1}`
 
-    let p3 = vec2.rotate([],[outerRadius,0],endAngle);
-        vec2.add(p3,p3,center)
+  
 
-    let p4 = vec2.rotate([],[innerRadius,0],endAngle);
-        vec2.add(p4,p4,center)
+   path += `A ${outerRadius} ${outerRadius} 0 ${large} 1 ${p2}`
+   path += sweep < 1 ? `L${p3}` : `A ${outerRadius} ${outerRadius} 0 ${large} 1 ${p1}z`
 
-   let large = sweep >= 0.5 ? 1 : 0 
+   if(ratio >0){
+    path += sweep < 1 ? "" : `M${p3}`;
+    path += `A ${innerRadius} ${innerRadius} 0 ${large} 0 ${p4}`
+    path += sweep < 1 ? `z` : `A ${innerRadius} ${innerRadius} 0 ${large} 0 ${p3}z`
+   }
 
-   let path = `M${p1}L${p2}`
-
-   path += `A ${outerRadius} ${outerRadius} 0 ${large} 1 ${p3}`
-   path += `L${p4}`
-   path += `A ${innerRadius} ${innerRadius} 0 ${large} 0 ${p1}`
-   path = svgpath(path).rel().round(1);
-   
+   path = svgpath(path).rel().translate(center[0],center[1]).round(1);
    return path
 
 }
