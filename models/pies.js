@@ -1,9 +1,9 @@
-const random = require('canvas-sketch-util/random');
-const {pie} = require('d3-shape')
+import random from 'canvas-sketch-util/random';
+import {pie} from 'd3-shape'
 
 const {getUnits} = require('../lib/units.js');
 
-const pies = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed) =>{
+export const pies = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed) =>{
     random.setSeed(seed)
     let TAU = 2* Math.PI;
     let {r, center, width, height} = getUnits(context); 
@@ -44,10 +44,6 @@ const pies = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b
         context.arc(center[0], center[1], radius, startAngle,  endAngle, false);
         context.arc(center[0], center[1], radius2, endAngle,  startAngle, true);
         context.fill()
-
     })
-
-
 }
 
-exports.pies = pies;
