@@ -6,33 +6,44 @@ import {XORShift64} from 'random-seedable';
 import {getRandomPalette} from './modules/palettes.js'
 
 import {brilliant} from "./svgmodels/brilliant.js"
+import {circles} from "./svgmodels/circles.js"
+let models = [brilliant,circles]
 
 //
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 let seed = today.getFullYear() * today.getMonth()+4 * today.getDate();
+ seed = new Date();
 
 const random = new XORShift64(seed);
 
-let viewBox = "-255 -250 500 500"
+let viewBox = "-500 -500 1000 1000"
 let palette = getRandomPalette(seed)
 
-let svg = brilliant(viewBox, palette, seed)
+
+
+let svg = random.choice(models)(viewBox,palette,seed)
+
 
 var buffer = Buffer.from(svg);
 
 sharp(buffer)
   .webp({quality:90})
   .toFile(`_site/${name}.webp`)
-  .then(info => { console.log(info) })
+ // .then(info => { console.log(info) })
   .catch(err => {  console.log(err) });
 
   sharp(buffer)
   .avif()
   .toFile(`_site/${name}.avif`)
-  .then(info => { console.log(info) })
+ // .then(info => { console.log(info) })
   .catch(err => {  console.log(err) });
 
+  sharp(buffer)
+  .jpeg()
+  .toFile(`_site/${name}.jpg`)
+ // .then(info => { console.log(info) })
+  .catch(err => {  console.log(err) });
 
 // Create HTML 
 
