@@ -11,7 +11,8 @@ import {ninethousandth} from "./svgmodels/ninethousandth.js"
 import {origami} from "./svgmodels/origami.js"
 import {mondrian} from "./svgmodels/mondrian.js"
 import {sparkles} from "./svgmodels/sparkles.js"
-let models = [sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian]
+import {odyssey} from "./svgmodels/odyssey.js"
+let models = [sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey]
 
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`

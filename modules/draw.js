@@ -28,12 +28,10 @@ export const drawArc = (settings) =>{
         sweep = 1
     } = settings;
 
-
     let startAngle = start * Math.PI * 2;
     
     let endAngle = sweep < 1 ? startAngle + sweep * Math.PI * 2 : startAngle + sweep * Math.PI;
     
-
     let outerRadius = radius;
     let innerRadius = radius * ratio;
 
@@ -45,10 +43,7 @@ export const drawArc = (settings) =>{
     let large = sweep >= 0.5 ? 1 : 0 
 
     let path = `M${p1}`
-
-  
-
-   path += `A ${outerRadius} ${outerRadius} 0 ${large} 1 ${p2}`
+    path += `A ${outerRadius} ${outerRadius} 0 ${large} 1 ${p2}`
    path += sweep < 1 ? `L${p3}` : `A ${outerRadius} ${outerRadius} 0 ${large} 1 ${p1}z`
 
    if(ratio >0){
