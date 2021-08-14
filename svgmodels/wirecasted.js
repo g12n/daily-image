@@ -3,7 +3,7 @@ import {XORShift64} from 'random-seedable';
 import  {drawPolygon} from '../modules/draw-polygon.js';
 import {radialPoints} from '../modules/radial-points.js'
 
-export const  brilliant = (viewBox="-250 -250 500 500", palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed=2) =>{
+export const  wirecasted = (viewBox="-250 -250 500 500", palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed=2) =>{
 
     let random =  new XORShift64( seed )
 
