@@ -10,7 +10,8 @@ import {pacmania} from "./svgmodels/pacmania.js"
 import {ninethousandth} from "./svgmodels/ninethousandth.js"
 import {origami} from "./svgmodels/origami.js"
 import {mondrian} from "./svgmodels/mondrian.js"
-let models = [wirecasted,ninethousandth,pacmania,origami,mondrian]
+import {sparkles} from "./svgmodels/sparkles.js"
+let models = [sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian]
 
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
@@ -60,17 +61,4 @@ var buffer = Buffer.from(svg);
 sharp(buffer)
   .webp({quality:90})
   .toFile(`${dir}/${name}.webp`)
- // .then(info => { console.log(info) })
-  .catch(err => {  console.log(err) });
-
-  sharp(buffer)
-  .avif()
-  .toFile(`${dir}/${name}.avif`)
- // .then(info => { console.log(info) })
-  .catch(err => {  console.log(err) });
-
-  sharp(buffer)
-  .jpeg()
-  .toFile(`${dir}/${name}.jpg`)
- // .then(info => { console.log(info) })
   .catch(err => {  console.log(err) });
