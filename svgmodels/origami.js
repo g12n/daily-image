@@ -4,7 +4,7 @@ import {drawRect } from '../modules/draw.js';
 import {getUnits} from '../modules/getUnits.js'
 
 
-export const juwel = (viewBox, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed=100) =>{
+export const origami = (viewBox, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed=100) =>{
 
     let random =  new XORShift64( seed );
 
