@@ -9,7 +9,8 @@ import {brilliant} from "./svgmodels/brilliant.js"
 import {circles} from "./svgmodels/circles.js"
 import {pies} from "./svgmodels/pies.js"
 import {juwel} from "./svgmodels/juwel.js"
-let models = [brilliant,pies,circles,juwel]
+import {mondrian} from "./svgmodels/mondrian.js"
+let models = [brilliant,pies,circles,juwel,mondrian]
 
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
