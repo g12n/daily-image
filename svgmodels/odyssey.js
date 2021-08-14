@@ -36,7 +36,7 @@ export const drawWedge = (settings) =>{
 
 export let odyssey = (viewBox, palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed) =>{
     
-    let {x,y,width, height,center,svgTag, inner} = getUnits(viewBox, 0.15)
+    let {x,y,width, height,center,svgTag, inner} = getUnits(viewBox, 0)
     let svg = svgTag;
     let random =  new XORShift64( seed );
     svg += `<title>${seed}</title>`
