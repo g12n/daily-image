@@ -34,6 +34,8 @@ export const pies = (context, palette= ["#003049","#d62828","#f77f00","#fcbf49",
     let data = palette.map(c => random.range(1,5))
     let angles = pie()(data)
     
+
+
     // draw wedges
 
     angles.map(({startAngle,endAngle},i)=>{
