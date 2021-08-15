@@ -1,5 +1,5 @@
 import {XORShift64} from 'random-seedable';
-import { drawArc,drawRect } from '../modules/draw.js';
+import {drawRect } from '../modules/draw.js';
 import {getUnits} from '../modules/getUnits.js'
 
 import  svgpath from "svgpath";
