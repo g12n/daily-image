@@ -13,7 +13,8 @@ import {mondrian} from "./svgmodels/mondrian.js"
 import {sparkles} from "./svgmodels/sparkles.js"
 import {odyssey} from "./svgmodels/odyssey.js"
 import {blowball} from "./svgmodels/blowball.js"
-let models = [sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball]
+import {clipped} from "./svgmodels/clipped.js"
+let models = [clipped,sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball]
 
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
