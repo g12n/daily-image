@@ -1,7 +1,7 @@
 import {lerpFrames} from '../modules/lerp.js';
 import {XORShift64} from 'random-seedable';
 import  {drawPolygon} from '../modules/draw-polygon.js';
-import {radialPoints} from '../modules/radial-points.js'
+import {radialPoints} from '../modules/radialPoints.js'
 
 export const  wirecasted = (viewBox="-250 -250 500 500", palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed=2) =>{
 

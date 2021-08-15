@@ -1,5 +1,4 @@
 import {XORShift64} from 'random-seedable';
-import {radialPoints} from '../modules/radial-points.js'
 import {drawRect } from '../modules/draw.js';
 import {getUnits} from '../modules/getUnits.js'
 
