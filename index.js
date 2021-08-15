@@ -12,7 +12,8 @@ import {origami} from "./svgmodels/origami.js"
 import {mondrian} from "./svgmodels/mondrian.js"
 import {sparkles} from "./svgmodels/sparkles.js"
 import {odyssey} from "./svgmodels/odyssey.js"
-let models = [sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey]
+import {blowball} from "./svgmodels/blowball.js"
+let models = [sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball]
 
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
@@ -21,7 +22,7 @@ let seed = Math.floor(today.getTime() / ms)
 
 const random = new XORShift64(seed);
 
-let viewBox = "0 0 1000 1000"
+let viewBox = "-500 -500 1000 1000"
 let palette = getRandomPalette(seed)
 
 

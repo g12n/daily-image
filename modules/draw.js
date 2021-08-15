@@ -18,6 +18,19 @@ export const drawRect = ({x,y,width,height}) =>{
    return path = svgpath(path).rel().round(1)
 }
 
+export const drawCircle = ({r=10, center=[0,0]}) => {
+    
+    center = [center[0],center[1]];
+    let p1 = vec2.add([],center,[0,r]);
+    let p2 = vec2.sub([],center,[0,r]);
+
+    let path = `M${p1}A ${r} ${r} 0 1 1 ${p2}`
+        path += `A ${r} ${r} 0 0 1 ${p1}`
+        path = svgpath(path).rel().round(1)
+
+    return path;
+}
+
 export const drawArc = (settings) =>{
 
     let {
