@@ -7,26 +7,24 @@ on:
     - cron:  '2 2 * * *'
 
 jobs:
-  deploy:
-    name: Checkout and Build
-    runs-on: ubuntu-latest    
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout 🛎️
+      uses: actions/checkout@v2.3.1
       with:
         ref: 'master'
-    - name: Use Node.js
+    - name: Use Node.js 
       uses: actions/setup-node@v1
       with:
         node-version: 15.x
-    - name: npm install and build
+    - name: Install and Build 🔧
       run: |
         npm ci --no-audit
         npm run build
-
-    - name: Deploy to gh-pages
-      uses: s0/git-publish-subdir-action@master
-      env:
-        REPO: self
-        BRANCH: gh-pages
-        FOLDER: _site
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: _dist # The folder the action should deploy.
+        clean: false
