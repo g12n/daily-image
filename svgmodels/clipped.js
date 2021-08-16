@@ -14,9 +14,12 @@ export function clipped(viewBox, palette= ["#003049","#d62828","#f77f00","#fcbf4
     let r = inner.r
     let svg= svgTag; 
 
-    let p1 = [x-10, random.randRange(y+padding, y + height-padding)]
+    let o1 = random.randRange(-90, 90) / 100;
+    let o2 = random.randRange(-90, 90) / 100;
+    
+    let p1 = [x-10, center[1] - r*o1]
    // p1= center
-    let p2 = [x + width+10, random.randRange(y+padding, y + height-padding)]
+    let p2 = [x + width+10, center[1] - r*o2]
 
     let intersections = intersectLineCircle(p1,p2,center,inner.r)
 
