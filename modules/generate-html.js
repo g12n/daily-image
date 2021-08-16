@@ -16,11 +16,18 @@ let code = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daily Images by G12N</title>
 <meta name="description" content="Generative Art by Michael Germann, updated on ${formated}" />
-<meta name="twitter:card" content="summary"></meta>
-<meta name="twitter:site" content="@mge_de" />
-<meta property="og:title" content="Daily Images for ${formated2} " />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mge_de">
+<meta name="twitter:creator" content="@mge_de">
+<meta name="twitter:title" content="Daily Image by G12N">
+<meta name="twitter:description" content="Daily generative art by Michael Germann. Updated on ${formated2}">
+<meta name="twitter:image" content="https://g12n.github.io/daily-image/${imageName}.jpeg">
+
+<meta property="og:title" content="Daily Image by G12N" />
 <meta property="og:image" content="https://g12n.github.io/daily-image/${imageName}.jpeg" />
-<meta property="og:description" content="Daily Updated generative art by Michael Germann. Current Update on ${formated2}" />
+<meta property="og:description" content="Daily generative art by Michael Germann. Updated on ${formated2}" />
+
 <style>
 body{
     margin: 0; 
