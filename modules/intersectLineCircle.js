@@ -43,7 +43,7 @@ export function intersectLineCircle(p1=[0,0],p2=[1,1], pc=[0,0],r=100) {
 
 
 	if (delta < 0){ // No intersection
-        return null;
+        return [];
     } 
 		
 	else if (delta == 0) { // One intersection
