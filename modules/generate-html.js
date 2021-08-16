@@ -1,10 +1,26 @@
+import { format } from 'date-fns'
+
+
 export const generateHtml = (svgs, date) => {
+
+let imageName =`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+
+imageName = format(date, "yyyy-M-d")
+let formated =format(date, "MM/dd/yyyy")
+let formated2 = format(date, "EEEE, do MMMM yyy")
+
 let code = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Image ${date} by G12Nss</title>
+<title>Daily Images by G12N</title>
+<meta name="description" content="Generative Art by Michael Germann, updated on ${formated}" />
+<meta name="twitter:card" content="summary"></meta>
+<meta name="twitter:site" content="@mge_de" />
+<meta property="og:title" content="Daily Images for ${formated2} " />
+<meta property="og:image" content="https://g12n.github.io/daily-image/${imageName}.jpeg" />
+<meta property="og:description" content="Daily Updated generative art by Michael Germann. Current Update on ${formated2}" />
 <style>
 body{
     margin: 0; 
@@ -46,8 +62,17 @@ figcaption {
 <body>
 `
 
+
+let makeTitle =(name) =>{
+
+    let [title, iteration] = name.split("-")
+    return `${title}, generative Art by Michael Gehrmann, iteration ${iteration}, ${formated2}`
+
+}
+
+
 svgs.map(svg =>{
-   code += `<figure><img width=1000 height=1000 src="${svg.name}.svg"/><figcaption>${svg.name}</figcaption></figure>`
+   code += `<figure><img width=1000 height=1000 src="${svg.name}.svg" title="${makeTitle(svg.name)}"/><figcaption>${svg.name}</figcaption></figure>`
 })
 code += `</body></html>`
 

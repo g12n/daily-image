@@ -1,20 +1,23 @@
 import {lerpFrames} from '../modules/lerp.js';
 import {XORShift64} from 'random-seedable';
 import  {drawPolygon} from '../modules/draw-polygon.js';
-import {radialPoints} from '../modules/radialPoints.js'
+import {radialPoints} from '../modules/radialPoints.js';
+import {getUnits} from '../modules/getUnits.js'
+
 
 export const  wirecasted = (viewBox="-250 -250 500 500", palette= ["#003049","#d62828","#f77f00","#fcbf49","#eae2b7"], seed=2) =>{
 
     let random =  new XORShift64( seed )
 
-    let [x,y,width, height] = viewBox.split(" ").map(v =>Number(v))
+    let {x,y,width, height,inner,center} = getUnits(viewBox, 0.1);
 
+    
     let corners = random.randRange(3,7);
     var padding = width*0.1; 
     let vw = width -2*padding;
-    let center = [width/2 + x, height/2 + y] 
-    let radius = vw/2
-    let lineWidth = vw/40;
+    
+    let radius = inner.r;
+    let lineWidth = radius/20;
     
 
     let svg = `<svg width="${width}" height="${height}" viewBox="${viewBox}" xmlns="http://www.w3.org/2000/svg">`
