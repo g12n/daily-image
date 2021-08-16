@@ -14,7 +14,8 @@ import {sparkles} from "./svgmodels/sparkles.js"
 import {odyssey} from "./svgmodels/odyssey.js"
 import {blowball} from "./svgmodels/blowball.js"
 import {clipped} from "./svgmodels/clipped.js"
-let models = [clipped,sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball]
+import {ornament} from "./svgmodels/ornament.js"
+let models = [ornament,clipped,sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball]
 
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
@@ -64,4 +65,8 @@ var buffer = Buffer.from(svg);
 sharp(buffer)
   .webp({quality:90})
   .toFile(`${dir}/${name}.webp`)
+  .catch(err => {  console.log(err) });
+sharp(buffer)
+  .jpeg({quality:90})
+  .toFile(`${dir}/${name}.jpeg`)
   .catch(err => {  console.log(err) });
