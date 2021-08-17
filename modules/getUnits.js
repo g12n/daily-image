@@ -22,6 +22,10 @@ export let  getUnits = (viewBox="0 0 100 100", pad=0.1) =>{
         r: r - padding
     }
 
+    inner.min = Math.min(inner.width, inner.height);
+    inner.max = Math.max(inner.width, inner.height);
+
+
     let svgTag = `<svg width="${width}" height="${height}" viewBox="${viewBox}" xmlns="http://www.w3.org/2000/svg">`;
 
     return {x,y,width,height,padding,r,center, inner, svgTag}
