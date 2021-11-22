@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/g12n/daily-image#readme",
   "dependencies": {
-    "date-fns": "^2.23.0",
+    "date-fns": "^2.26.0",
     "gl-vec2": "^1.3.0",
     "gl-vec3": "^1.1.3",
     "random-seedable": "^1.0.6",
