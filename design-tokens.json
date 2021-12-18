@@ -186,5 +186,13 @@
         }
       }
     }
+  },
+  "large": {
+    "size": {
+      "multiplier": {
+        "value": "1.9",
+        "type": "sizing"
+      }
+    }
   }
 }
