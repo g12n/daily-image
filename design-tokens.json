@@ -78,10 +78,16 @@
     }
   },
   "default": {
+    "background": {
+      "value": "{palette.neutral.100}",
+      "description": "Background of the application",
+      "type": "color"
+    },
     "surfaces": {
       "default": {
         "background": {
           "value": "{palette.neutral.50}",
+          "description": "Bachground-color of the application",
           "type": "color"
         },
         "on": {
