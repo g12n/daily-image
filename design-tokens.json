@@ -81,7 +81,7 @@
     "surfaces": {
       "default": {
         "background": {
-          "value": "{palette.neutral.100}",
+          "value": "{palette.neutral.50}",
           "type": "color"
         },
         "on": {
