@@ -8,7 +8,7 @@ export const drawPolygon = (polygon = [[0,0],[10,10][0,20]]) =>{
         path+= i=== 0 ? `M${x}, ${y}` : `L ${x}, ${y}`;
     })
     path += "z"
-    path = svgpath(path).rel().round(1)
+    path = svgpath(path).rel().round(1).toString()
     return path;
 }
 
