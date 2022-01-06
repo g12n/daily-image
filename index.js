@@ -16,7 +16,9 @@ import {blowball} from "./svgmodels/blowball.js"
 import {clipped} from "./svgmodels/clipped.js"
 import {ornament} from "./svgmodels/ornament.js"
 import {tenthousand} from "./svgmodels/tenthousand.js"
-let models = [ornament,clipped,sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball,tenthousand]
+import {fluxim} from "./svgmodels/fluxim.js";
+
+let models = [fluxim,ornament,clipped,sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball,tenthousand]
 
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`

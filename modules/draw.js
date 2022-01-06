@@ -1,5 +1,7 @@
 import  svgpath from "svgpath";
-import vec2 from "gl-vec2"
+import vec2 from "gl-vec2";
+import  fitCurve from "fit-curve";
+
 
 
 export const drawPolygon = (polygon = [[0,0],[10,10][0,20]]) =>{
@@ -12,6 +14,30 @@ export const drawPolygon = (polygon = [[0,0],[10,10][0,20]]) =>{
     return path;
 }
 
+export const drawPolygonSmooth = (polygon = [[0,0],[10,10][0,20]], error = 20) =>{
+
+
+
+    let curve = fitCurve(polygon, error);
+    
+    
+
+    let path = ""
+
+    curve.map( ([p1,c1,c2,p2],i) => {
+        path+= i=== 0 ? `M${p1}C ${c1} ${c2} ${p2}` : `C ${c1} ${c2} ${p2}`;
+    })
+    path += "z"
+    console.log(path)
+    path = svgpath(path).rel().round(1).toString();
+    
+    return path;
+}
+
+
+
+
+
 export const drawRect = ({x,y,width,height}) =>{
 
     let path= `M${x},${y}h${width}v${height}h-${width}z`;
@@ -19,7 +45,7 @@ export const drawRect = ({x,y,width,height}) =>{
 }
 
 export const drawCircle = ({r=10, center=[0,0]}) => {
-     
+    
     center = [center[0],center[1]];
     let p1 = vec2.add([],center,[0,r]);
     let p2 = vec2.sub([],center,[0,r]);
