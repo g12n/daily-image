@@ -17,12 +17,14 @@ import {clipped} from "./svgmodels/clipped.js"
 import {ornament} from "./svgmodels/ornament.js"
 import {tenthousand} from "./svgmodels/tenthousand.js"
 import {fluxim} from "./svgmodels/fluxim.js";
+import {sanguine} from "./svgmodels/sanguine.js";
 
-let models = [fluxim,ornament,clipped,sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball,tenthousand]
+let models = [sanguine,fluxim,ornament,clipped,sparkles, wirecasted,ninethousandth,pacmania,origami,mondrian,odyssey,blowball,tenthousand]
 
 let today = new Date();
 let name =`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
 let ms = 1000* 60 * 60 * 24;
+ 
 let seed = Math.floor(today.getTime() / ms) 
 
 const random = new XORShift64(seed);

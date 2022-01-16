@@ -28,7 +28,7 @@ export const drawPolygonSmooth = (polygon = [[0,0],[10,10][0,20]], error = 20) =
         path+= i=== 0 ? `M${p1}C ${c1} ${c2} ${p2}` : `C ${c1} ${c2} ${p2}`;
     })
     path += "z"
-    console.log(path)
+    
     path = svgpath(path).rel().round(1).toString();
     
     return path;
