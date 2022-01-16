@@ -16,12 +16,8 @@ export const drawPolygon = (polygon = [[0,0],[10,10][0,20]]) =>{
 
 export const drawPolygonSmooth = (polygon = [[0,0],[10,10][0,20]], error = 20) =>{
 
-
-
     let curve = fitCurve(polygon, error);
     
-    
-
     let path = ""
 
     curve.map( ([p1,c1,c2,p2],i) => {
