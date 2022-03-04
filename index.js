@@ -31,8 +31,9 @@ let seed = Math.floor(today.getTime() / ms)
 const random = new XORShift64(seed);
 
 let viewBox = "-500 -500 1200 675"
-let palette = getRandomPalette(seed)
 
+//let palette = getRandomPalette(seed)
+let palette =  ["#005bbb","#fff500","#fff","#c2e1ff"];
 
 let svgs = []
 

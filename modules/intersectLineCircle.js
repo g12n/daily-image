@@ -74,7 +74,5 @@ export function intersectLineCircle(p1=[0,0],p2=[1,1], pc=[0,0],r=100) {
         out[0] = vec2.add([],p1,vec2.mul([],[u1,u1],P2MinusP1))
         out[1] = vec2.add([],p1,vec2.mul([],[u2,u2],P2MinusP1))
         return out;
-
-
     }
 }
