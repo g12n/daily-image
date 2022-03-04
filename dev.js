@@ -17,7 +17,6 @@ bs.init({
                    console.log("changed");
                    spawn('node',["index.js"]);
                }
-
             },
             options: {
                 ignored: '*.txt'
