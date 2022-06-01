@@ -28,7 +28,7 @@
     "poisson-disk-sampling": "^2.2.2",
     "polygon-clipping": "^0.15.3",
     "random-seedable": "^1.0.6",
-    "sharp": "^0.28.3",
+    "sharp": "^0.30.5",
     "simplex-noise": "^3.0.1",
     "svgpath": "^2.3.1"
   }
